@@ -10,7 +10,7 @@ import android.webkit.WebViewClient;
 public class MainActivity extends AppCompatActivity {
 
     private WebView wvMain;
-    private String urlGranjas = "http://c017090b2d.nxcli.net/home/";
+    private final String URL = "http://c017090b2d.nxcli.net/home/";
 
     @SuppressLint("WrongViewCast")
     @Override
@@ -21,9 +21,9 @@ public class MainActivity extends AppCompatActivity {
         ocultarActionBar();
 
         wvMain = findViewById(R.id.wvMain);
-        wvMain.setWebViewClient(new WebViewClient());
-        wvMain.getSettings().setJavaScriptEnabled(true);
-        wvMain.loadUrl(urlGranjas);
+        wvMain.setWebViewClient(new WebViewClient()); // Convertimos a la aplicacion como un cliente
+        wvMain.getSettings().setJavaScriptEnabled(true); // Habilitamos el js
+        wvMain.loadUrl(URL);
     }
 
     private void ocultarActionBar() {
