@@ -15,10 +15,11 @@ public class MainActivity extends AppCompatActivity {
     @SuppressLint("WrongViewCast")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
 
         ocultarActionBar();
+
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
 
         wvMain = findViewById(R.id.wvMain);
         wvMain.setWebViewClient(new WebViewClient()); // Convertimos a la aplicacion como un cliente
