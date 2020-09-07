@@ -24,6 +24,7 @@ public class splash extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        intentError = new Intent(splash.this, ErrorActivity.class);
         network = new Network();
         ocultarActionBar();
 
@@ -47,7 +48,7 @@ public class splash extends AppCompatActivity {
                             finish();
                         } else {
                             Log.d("TAG", "Sin acceso a internet");
-                            showDialogInternetFailed();
+                            startActivity(intentError);
                         }
                     } catch (InterruptedException e) {
                         e.printStackTrace();
@@ -56,7 +57,7 @@ public class splash extends AppCompatActivity {
                     }
                 } else {
                     Log.d("TAG", "Ninguna red activa");
-                    showDialogInternetFailed();
+                    startActivity(intentError);
                 }
 
             }
@@ -65,26 +66,8 @@ public class splash extends AppCompatActivity {
     }
 
 
-    /** METODOS */
-
     private void ocultarActionBar() {
         getSupportActionBar().hide();
     }
 
-    // Mostrara un dialogo cuando falle el internet
-    private void showDialogInternetFailed() {
-        AlertDialog.Builder builder = new AlertDialog.Builder(splash.this);
-        builder.setTitle("Mensage");
-        builder.setMessage("Verifique su conexión a internet y vuelva intentarlo");
-
-        // Asignamos la accion cuando no haya internet
-        builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                finishAffinity(); // Cerramos la aplicacion
-            }
-        });
-
-        builder.show();
-    }
 }
