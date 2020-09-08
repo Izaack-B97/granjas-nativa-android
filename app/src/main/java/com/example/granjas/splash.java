@@ -40,14 +40,15 @@ public class splash extends AppCompatActivity {
             public void run() {
 
                 if (network.isOnline(getApplicationContext())) {
+                    // Redes Activas
                     try {
                         if (network.connectedToInternet()) {
-                            Log.d("TAG", "Acceso a internet");
+                            // Acesso a internet
                             intentMain = new Intent(splash.this, MainActivity.class);
                             startActivity(intentMain);
                             finish();
                         } else {
-                            Log.d("TAG", "Sin acceso a internet");
+                            // Sin acceso a internet
                             startActivity(intentError);
                         }
                     } catch (InterruptedException e) {
@@ -56,7 +57,7 @@ public class splash extends AppCompatActivity {
                         e.printStackTrace();
                     }
                 } else {
-                    Log.d("TAG", "Ninguna red activa");
+                    // Ninguna red activa
                     startActivity(intentError);
                 }
 
